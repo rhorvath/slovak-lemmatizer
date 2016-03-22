@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <word id="1" lemma="mama" form="mamu" form_ai="mamu" tag="SSfs4" />
+    <word id="2" lemma="pekný" form="pekným" form_ai="peknym" tag="AAmp3x" />
+    <word id="3" lemma="čas" form="časom" form_ai="casom" tag="SSis7" />
+    <word id="4" lemma="čas" form="časom" form_ai="casom" tag="SSis3" />
+</dataset>
