@@ -4,6 +4,7 @@ package sk.lemmatizer.integration;
 import com.github.springtestdbunit.DbUnitTestExecutionListener;
 import com.github.springtestdbunit.annotation.DatabaseSetup;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,10 +48,26 @@ public class LemmatizationServiceTests {
     }
 
     @Test
-    public void getLemmaForEmptyText() throws Exception {
+    public void getLemmaFastEmptyText() throws Exception {
         mockMvc.perform(get("/fast?text="))
                 .andExpect(status().isOk())
                 .andExpect(content().string(""));
     }
-    
+
+    @Test
+    public void getLemmaFastExistingWord() throws Exception {
+        mockMvc.perform(get("/fast?text=mamu"))
+                .andExpect(status().isOk())
+                .andExpect(content().string("mama"));
+    }
+
+    @Ignore  //TODO: fix encoding, mockMVC is not returning utf-8
+    @Test
+    public void getLemmaFastMultipleWords() throws Exception {
+        mockMvc.perform(get("/fast?text=Mamu. Pekným časom!"))
+                .andExpect(status().isOk())
+                .andExpect(content().encoding("utf-8"))
+                .andExpect(content().string("mama. pekný čas!"));
+    }
+
 }
