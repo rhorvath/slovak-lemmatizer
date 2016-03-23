@@ -9,6 +9,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -20,8 +21,10 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import sk.lemmatizer.config.Application;
 import sk.lemmatizer.controller.LemmatizationController;
 
+import static org.hamcrest.Matchers.hasSize;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
@@ -68,6 +71,18 @@ public class LemmatizationServiceTests {
                 .andExpect(status().isOk())
                 .andExpect(content().encoding("utf-8"))
                 .andExpect(content().string("mama. pekný čas!"));
+    }
+
+    @Test
+    public void getLemmaFull() throws Exception {
+        mockMvc.perform(get("/full?text=Mamu. časom test").accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$", hasSize(3)))
+                .andExpect(jsonPath("$[0]", hasSize(1)))
+                .andExpect(jsonPath("$[1]", hasSize(2)))
+                .andExpect(jsonPath("$[2]", hasSize(0)))
+                .andExpect(jsonPath("$[0][0].lemma").value("mama"))
+                .andExpect(jsonPath("$[0][0].tag").value("SSfs4"));
     }
 
 }
