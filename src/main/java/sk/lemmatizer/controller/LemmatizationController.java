@@ -45,11 +45,9 @@ public class LemmatizationController {
             @RequestParam String text,
             @RequestParam (defaultValue = "true") boolean useDatabase,
             @RequestParam (defaultValue = "true") boolean useTvaroslovnik,
-            @RequestParam (defaultValue = "true") boolean inputDiacritics,
-            @RequestParam (defaultValue = "true") boolean outputDiacritics,
-            @RequestParam (defaultValue = "true") boolean keepStructure
+            @RequestParam (defaultValue = "true") boolean inputDiacritics
     ) {
-        return lemmatizationService.fullLemmatize(text, useDatabase, useTvaroslovnik, inputDiacritics, outputDiacritics, keepStructure);
+        return lemmatizationService.fullLemmatize(text, useDatabase, useTvaroslovnik, inputDiacritics);
     }
 
     @RequestMapping(value = "/full", method = RequestMethod.POST)
@@ -57,11 +55,9 @@ public class LemmatizationController {
             @RequestBody String text,
             @RequestParam (defaultValue = "true") boolean useDatabase,
             @RequestParam (defaultValue = "true") boolean useTvaroslovnik,
-            @RequestParam (defaultValue = "true") boolean inputDiacritics,
-            @RequestParam (defaultValue = "true") boolean outputDiacritics,
-            @RequestParam (defaultValue = "true") boolean keepStructure
+            @RequestParam (defaultValue = "true") boolean inputDiacritics
     ) {
-        return lemmatizationService.fullLemmatize(text, useDatabase, useTvaroslovnik, inputDiacritics, outputDiacritics, keepStructure);
+        return lemmatizationService.fullLemmatize(text, useDatabase, useTvaroslovnik, inputDiacritics);
     }
 
 }

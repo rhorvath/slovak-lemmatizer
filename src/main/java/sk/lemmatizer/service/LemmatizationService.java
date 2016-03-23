@@ -43,7 +43,7 @@ public class LemmatizationService {
         return outputDiacritics ? stringBuffer.toString() : TextUtils.deAccent(stringBuffer.toString());
     }
 
-    public List<List<Word>> fullLemmatize(String text, boolean useDatabase, boolean useTvaroslovnik, boolean inputDiacritics, boolean outputDiacritics, boolean keepStructure) {
+    public List<List<Word>> fullLemmatize(String text, boolean useDatabase, boolean useTvaroslovnik, boolean inputDiacritics) {
         List<List<Word>> wordList = new ArrayList<List<Word>>();
         for (String word : TextUtils.removeNonAlpha(text.toLowerCase()).split("\\s")) {
             wordList.add(findAllLemmas(word, useDatabase, useTvaroslovnik, inputDiacritics));
