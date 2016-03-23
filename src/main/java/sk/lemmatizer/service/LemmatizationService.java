@@ -10,6 +10,7 @@ import sk.lemmatizer.model.Word;
 import sk.lemmatizer.utils.TextUtils;
 
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -43,7 +44,11 @@ public class LemmatizationService {
     }
 
     public List<List<Word>> fullLemmatize(String text, boolean useDatabase, boolean useTvaroslovnik, boolean inputDiacritics, boolean outputDiacritics, boolean keepStructure) {
-        throw new UnsupportedOperationException("not implemented");
+        List<List<Word>> wordList = new ArrayList<List<Word>>();
+        for (String word : TextUtils.removeNonAlpha(text.toLowerCase()).split("\\s")) {
+            wordList.add(findAllLemmas(word, useDatabase, useTvaroslovnik, inputDiacritics));
+        }
+        return wordList;
     }
 
     private String findSingleLemma(String word, boolean useDatabase, boolean useTvaroslovnik, boolean inputDiacritics) {
@@ -63,5 +68,18 @@ public class LemmatizationService {
         return lemma != null ? lemma : word;
     }
 
+    private List<Word> findAllLemmas(String word, boolean useDatabase, boolean useTvaroslovnik, boolean inputDiacritics) {
+        List<Word> wordList = new ArrayList<Word>();
+        if (useDatabase) {
+            wordList.addAll(wordDao.findByForm(word));
+            if (!inputDiacritics) {
+                wordList.addAll(wordDao.findByFormAi(word));
+            }
+        }
+        if (useTvaroslovnik) {
+            //TODO: add tvaroslovnik implementation
+        }
+        return wordList;
+    }
 
 }
