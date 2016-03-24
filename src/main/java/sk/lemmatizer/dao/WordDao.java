@@ -7,10 +7,10 @@ import java.util.List;
 
 public interface WordDao extends CrudRepository<Word, Long> {
 
-    public List<Word> findByForm(String form);
+    List<Word> findByForm(String form);
 
-    public List<Word> findByFormAi(String formAi);
+    List<Word> findByFormAi(String formAi);
 
-    public List<Word> findByLemma(String lemma);
+    List<Word> findByLemma(String lemma);
 
 }
