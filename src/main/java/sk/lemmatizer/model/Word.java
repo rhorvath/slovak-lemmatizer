@@ -3,7 +3,15 @@ package sk.lemmatizer.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "word")
+@Table(
+        name = "word",
+        indexes = {
+                @Index(columnList = "lemma", name = "idx_lemma"),
+                @Index(columnList = "form", name = "idx_form"),
+                @Index(columnList = "form_ai", name = "idx_form_ai"),
+                @Index(columnList = "tag", name = "idx_tag")
+        }
+)
 public class Word {
 
     @Id
