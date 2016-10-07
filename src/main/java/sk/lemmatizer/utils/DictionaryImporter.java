@@ -9,7 +9,9 @@ import org.springframework.stereotype.Component;
 import sk.lemmatizer.dao.WordDao;
 import sk.lemmatizer.model.Word;
 
-import java.io.*;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 @Component
 public class DictionaryImporter implements CommandLineRunner {

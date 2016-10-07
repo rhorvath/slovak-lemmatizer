@@ -1,6 +1,5 @@
 package sk.lemmatizer.service;
 
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +7,6 @@ import org.springframework.stereotype.Service;
 import sk.lemmatizer.dao.WordDao;
 import sk.lemmatizer.model.Word;
 import sk.lemmatizer.utils.TextUtils;
-
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,6 +1,5 @@
 package sk.lemmatizer.utils;
 
-
 import java.text.Normalizer;
 import java.util.regex.Pattern;
 
@@ -11,10 +10,12 @@ public class TextUtils {
 
     private static final String CHARS_TO_REMOVE_REGEXP = "[^a-záäčďéíĺňľóôŕšťúýž]+";
 
-    private TextUtils(){}
+    private TextUtils() {
+    }
 
     /**
      * Removes an accent from text.
+     *
      * @param str text to remove accent from
      * @return text without an accent
      */
@@ -27,6 +28,7 @@ public class TextUtils {
     /**
      * Removes all non alphabetic characters from text.
      * Method expects input to contain lower case characters only.
+     *
      * @param str text with lower case only chars
      * @return text without non alphabetic characters
      */

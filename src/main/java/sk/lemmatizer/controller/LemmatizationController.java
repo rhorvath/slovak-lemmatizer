@@ -19,11 +19,11 @@ public class LemmatizationController {
     @RequestMapping(value = "/fast", method = RequestMethod.GET)
     public String fastLemmatizeFromUrl(
             @RequestParam String text,
-            @RequestParam (defaultValue = "true") boolean useDatabase,
-            @RequestParam (defaultValue = "true") boolean useTvaroslovnik,
-            @RequestParam (defaultValue = "true") boolean inputDiacritics,
-            @RequestParam (defaultValue = "true") boolean outputDiacritics,
-            @RequestParam (defaultValue = "true") boolean keepStructure
+            @RequestParam(defaultValue = "true") boolean useDatabase,
+            @RequestParam(defaultValue = "true") boolean useTvaroslovnik,
+            @RequestParam(defaultValue = "true") boolean inputDiacritics,
+            @RequestParam(defaultValue = "true") boolean outputDiacritics,
+            @RequestParam(defaultValue = "true") boolean keepStructure
     ) {
         return lemmatizationService.fastLemmatize(text, useDatabase, useTvaroslovnik, inputDiacritics, outputDiacritics, keepStructure);
     }
@@ -31,11 +31,11 @@ public class LemmatizationController {
     @RequestMapping(value = "/fast", method = RequestMethod.POST)
     public String fastLemmatizeFromBody(
             @RequestBody String text,
-            @RequestParam (defaultValue = "true") boolean useDatabase,
-            @RequestParam (defaultValue = "true") boolean useTvaroslovnik,
-            @RequestParam (defaultValue = "true") boolean inputDiacritics,
-            @RequestParam (defaultValue = "true") boolean outputDiacritics,
-            @RequestParam (defaultValue = "true") boolean keepStructure
+            @RequestParam(defaultValue = "true") boolean useDatabase,
+            @RequestParam(defaultValue = "true") boolean useTvaroslovnik,
+            @RequestParam(defaultValue = "true") boolean inputDiacritics,
+            @RequestParam(defaultValue = "true") boolean outputDiacritics,
+            @RequestParam(defaultValue = "true") boolean keepStructure
     ) {
         return lemmatizationService.fastLemmatize(text, useDatabase, useTvaroslovnik, inputDiacritics, outputDiacritics, keepStructure);
     }
@@ -43,9 +43,9 @@ public class LemmatizationController {
     @RequestMapping(value = "/full", method = RequestMethod.GET)
     public List<List<Word>> fullLemmatizeFromUrl(
             @RequestParam String text,
-            @RequestParam (defaultValue = "true") boolean useDatabase,
-            @RequestParam (defaultValue = "true") boolean useTvaroslovnik,
-            @RequestParam (defaultValue = "true") boolean inputDiacritics
+            @RequestParam(defaultValue = "true") boolean useDatabase,
+            @RequestParam(defaultValue = "true") boolean useTvaroslovnik,
+            @RequestParam(defaultValue = "true") boolean inputDiacritics
     ) {
         return lemmatizationService.fullLemmatize(text, useDatabase, useTvaroslovnik, inputDiacritics);
     }
@@ -53,9 +53,9 @@ public class LemmatizationController {
     @RequestMapping(value = "/full", method = RequestMethod.POST)
     public List<List<Word>> fullLemmatizeFromBody(
             @RequestBody String text,
-            @RequestParam (defaultValue = "true") boolean useDatabase,
-            @RequestParam (defaultValue = "true") boolean useTvaroslovnik,
-            @RequestParam (defaultValue = "true") boolean inputDiacritics
+            @RequestParam(defaultValue = "true") boolean useDatabase,
+            @RequestParam(defaultValue = "true") boolean useTvaroslovnik,
+            @RequestParam(defaultValue = "true") boolean inputDiacritics
     ) {
         return lemmatizationService.fullLemmatize(text, useDatabase, useTvaroslovnik, inputDiacritics);
     }
