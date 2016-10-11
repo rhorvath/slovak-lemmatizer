@@ -46,7 +46,7 @@ public class LemmatizationService {
     }
 
     public List<List<Word>> fullLemmatize(String text, boolean useDatabase, boolean useTvaroslovnik, boolean inputDiacritics) {
-        List<List<Word>> wordList = new ArrayList<List<Word>>();
+        List<List<Word>> wordList = new ArrayList<>();
         for (String word : TextUtils.removeNonAlpha(text.toLowerCase()).split("\\s")) {
             wordList.add(findAllLemmas(word, useDatabase, useTvaroslovnik, inputDiacritics));
         }
@@ -71,7 +71,7 @@ public class LemmatizationService {
     }
 
     private List<Word> findAllLemmas(String word, boolean useDatabase, boolean useTvaroslovnik, boolean inputDiacritics) {
-        List<Word> wordList = new ArrayList<Word>();
+        List<Word> wordList = new ArrayList<>();
         if (useDatabase) {
             wordList.addAll(wordDao.findByForm(word));
             if (!inputDiacritics) {
