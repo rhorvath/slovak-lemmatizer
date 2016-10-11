@@ -13,8 +13,12 @@ import java.util.List;
 @RestController
 public class LemmatizationController {
 
+    private final LemmatizationService lemmatizationService;
+
     @Autowired
-    private LemmatizationService lemmatizationService;
+    public LemmatizationController(LemmatizationService lemmatizationService) {
+        this.lemmatizationService = lemmatizationService;
+    }
 
     @RequestMapping(value = "/fast", method = RequestMethod.GET)
     public String fastLemmatizeFromUrl(

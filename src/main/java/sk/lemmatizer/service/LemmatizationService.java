@@ -18,8 +18,12 @@ public class LemmatizationService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(LemmatizationService.class);
 
+    private final WordDao wordDao;
+
     @Autowired
-    private WordDao wordDao;
+    public LemmatizationService(WordDao wordDao) {
+        this.wordDao = wordDao;
+    }
 
     public String fastLemmatize(String text, boolean useDatabase, boolean useTvaroslovnik, boolean inputDiacritics, boolean outputDiacritics, boolean keepStructure) {
         StringBuffer stringBuffer = new StringBuffer();

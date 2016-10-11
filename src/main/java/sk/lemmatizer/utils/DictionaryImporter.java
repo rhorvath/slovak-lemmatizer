@@ -18,8 +18,12 @@ public class DictionaryImporter implements CommandLineRunner {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(DictionaryImporter.class);
 
+    private final WordDao wordDao;
+
     @Autowired
-    private WordDao wordDao;
+    public DictionaryImporter(WordDao wordDao) {
+        this.wordDao = wordDao;
+    }
 
     @Override
     public void run(String... args) throws Exception {
